@@ -546,7 +546,7 @@
 
             Plotly.newPlot('umap-plot', traces, Object.assign({}, baseLayout, {
                 title: { text: 'Human Brain Single-Cell Chromatin Atlas (624K nuclei)', font: { size: 14 } },
-                xaxis: { title: 'UMAP 1', zeroline: false, showgrid: false },
+                xaxis: { title: 'UMAP 1 (chromatin accessibility)', zeroline: false, showgrid: false },
                 yaxis: { title: 'UMAP 2', zeroline: false, showgrid: false },
                 margin: { l: 50, r: 20, t: 45, b: 50 },
                 legend: { font: { size: 11 }, itemsizing: 'constant', tracegroupgap: 2 },
@@ -593,10 +593,10 @@
 
             Plotly.newPlot('perm-plot', traces, Object.assign({}, baseLayout, {
                 grid: { rows: 1, columns: 2, pattern: 'independent', subplots: [['xy', 'x2y2']] },
-                xaxis: { title: 'Principal Component', dtick: 5 },
-                yaxis: { title: 'Variance Explained', type: 'log' },
-                xaxis2: { title: 'PC (zoom: 20\u201342)', dtick: 2 },
-                yaxis2: { title: 'Variance Explained' },
+                xaxis: { title: 'Principal component', dtick: 5 },
+                yaxis: { title: 'Fraction of variance explained', type: 'log' },
+                xaxis2: { title: 'Principal component (zoom: 20\u201342)', dtick: 2 },
+                yaxis2: { title: 'Fraction of variance explained' },
                 margin: { l: 60, r: 20, t: 35, b: 50 },
                 legend: { x: 0.65, y: 0.95, font: { size: 11 } },
                 annotations: [
@@ -658,8 +658,8 @@
                 showlegend: false
             }], Object.assign({}, baseLayout, {
                 title: { text: 'TF Motif Specificity (981 motifs ranked by Gini coefficient)', font: { size: 14 } },
-                xaxis: { title: 'TF motif rank', showticklabels: false },
-                yaxis: { title: 'Gini coefficient' },
+                xaxis: { title: 'TF motifs (ranked most specific \u2192 most ubiquitous)', showticklabels: false },
+                yaxis: { title: 'Gini coefficient (cell-type specificity)' },
                 margin: { l: 60, r: 20, t: 45, b: 50 },
                 annotations: annotations
             }), plotlyConfig);
@@ -732,11 +732,11 @@
                 hovertemplate: '%{x} vs %{y}<br>JSD = %{z:.4f}<extra></extra>'
             }], Object.assign({}, baseLayout, {
                 title: { text: 'Jensen\u2013Shannon Divergence (TF motif profiles)', font: { size: 14 } },
-                xaxis: { showticklabels: false, title: '' },
-                yaxis: { showticklabels: false, title: '', autorange: 'reversed' },
-                margin: { l: 30, r: 30, t: 45, b: 30 },
+                xaxis: { showticklabels: false, title: 'Cell type (hierarchically clustered)' },
+                yaxis: { showticklabels: false, title: 'Cell type', autorange: 'reversed' },
+                margin: { l: 55, r: 30, t: 45, b: 50 },
                 width: null,
-                height: 580
+                height: 600
             }), plotlyConfig);
             menuToggle('jsd-menu-btn', 'jsd-plot');
         });
@@ -758,11 +758,11 @@
                 hovertemplate: '%{x} vs %{y}<br>Jaccard = %{z:.4f}<extra></extra>'
             }], Object.assign({}, baseLayout, {
                 title: { text: 'Jaccard Index (cCRE coordinate overlap)', font: { size: 14 } },
-                xaxis: { showticklabels: false, title: '' },
-                yaxis: { showticklabels: false, title: '', autorange: 'reversed' },
-                margin: { l: 30, r: 30, t: 45, b: 30 },
+                xaxis: { showticklabels: false, title: 'Cell type (hierarchically clustered)' },
+                yaxis: { showticklabels: false, title: 'Cell type', autorange: 'reversed' },
+                margin: { l: 55, r: 30, t: 45, b: 50 },
                 width: null,
-                height: 580
+                height: 600
             }), plotlyConfig);
             menuToggle('jaccard-menu-btn', 'jaccard-plot');
         });
@@ -816,8 +816,8 @@
 
             Plotly.newPlot('concordance-plot', traces, Object.assign({}, baseLayout, {
                 title: { text: 'Cross-Modal Concordance: 87 Specific TFs', font: { size: 14 } },
-                xaxis: { title: '', type: 'category', categoryorder: 'array', categoryarray: ['Bulk only', 'Shared', 'Single-cell only'] },
-                yaxis: { title: 'TF index (within category)', showticklabels: false },
+                xaxis: { title: 'Detection source (bulk PCA vs single-cell Gini)', type: 'category', categoryorder: 'array', categoryarray: ['Bulk only', 'Shared', 'Single-cell only'] },
+                yaxis: { title: 'Individual TFs', showticklabels: false },
                 margin: { l: 50, r: 20, t: 45, b: 50 },
                 legend: { font: { size: 11 }, title: { text: 'TF Family', font: { size: 12 } } },
                 hovermode: 'closest'
