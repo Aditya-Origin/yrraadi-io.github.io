@@ -179,6 +179,29 @@
                                 <img src="assets/05_pca_permutation.png" alt="PCA permutation test" loading="lazy" />
                             </figure>
                         </noscript>
+
+                        <h4>What the axes actually encode</h4>
+
+                        <p>Permutation testing tells you the axes are real. It doesn&rsquo;t tell you what they mean. For that, we can look at the specific cCREs with the highest loadings on each PC&mdash;the regulatory elements that <em>define</em> each axis. If PC2 really separates brain from blood, the cCREs driving it should sit on genes with known brain or blood functions. And not just vaguely nearby&mdash;they should be promoters, sitting directly on the transcription start site.</p>
+
+                        <p>That&rsquo;s exactly what we find. Take PC2 (brain vs blood, 8.3% of variance). On the brain side, the highest-loading promoter-like cCREs include:</p>
+
+                        <ul>
+                            <li><b>GRM3</b> &mdash; glutamate metabotropic receptor 3. A PLS element sits <b>88&thinsp;bp</b> from its TSS. This is the receptor for the brain&rsquo;s primary excitatory neurotransmitter.</li>
+                            <li><b>NTM</b> &mdash; neurotrimin, a neural cell adhesion molecule that mediates neurite outgrowth. Promoter <b>87&thinsp;bp</b> away.</li>
+                            <li><b>CX3CL1</b> &mdash; fractalkine, the signal neurons use to communicate with microglia. Promoter <b>36&thinsp;bp</b> away.</li>
+                            <li><b>GPR75</b> &mdash; a G-protein coupled receptor enriched in brain. Promoter <b>7&thinsp;bp</b> from the TSS&mdash;essentially overlapping it.</li>
+                            <li><b>AQP4</b> &mdash; aquaporin-4, the water channel that defines astrocyte endfeet at the blood&ndash;brain barrier. Promoter 2.5&thinsp;kb away.</li>
+                        </ul>
+
+                        <p>On the blood side of the same axis, the top cCREs are proximal enhancers near hematopoietic genes: <b>MYO1G</b> (a myosin expressed exclusively in blood cells, pELS 1.6&thinsp;kb), <b>ADAM8</b> (a metalloprotease for leukocyte migration, pELS 1.8&thinsp;kb), and <b>ITGB7</b> (integrin beta-7 for leukocyte homing, PLS 21&thinsp;bp).</p>
+
+                        <p>This isn&rsquo;t a statistical abstraction. The axis that separates brain from blood is literally built from the promoters of glutamate receptors on one side and leukocyte integrins on the other. The cCREs <em>are</em> the biology.</p>
+
+                        <p>The pattern holds for other axes too. PC1 (chromatin compaction vs transcriptional activity, 15.0%) has high-loading promoters near <b>FOSL2</b> (an AP-1 transcription factor for activity-dependent gene regulation, PLS 4.4&thinsp;kb) and <b>NR2F2</b>/COUP-TFII (a nuclear receptor that controls tissue-specific enhancer activity, PLS 1.5&thinsp;kb)&mdash;both master regulators of whether chromatin is in an active or repressed state. PC14 (cortex vs basal ganglia) loads on <b>SYT3</b> (synaptotagmin-3, a synaptic vesicle protein enriched in subcortical structures, pELS 560&thinsp;bp on the basal ganglia side) and <b>TAGLN</b> (transgelin, a smooth-muscle marker enriched in cortical vasculature, pELS 210&thinsp;bp on the cortical side).</p>
+
+                        <p>We ran the same analysis on a brain-only PCA (813 brain samples, separate from the all-ENCODE decomposition), and the gene-level resolution gets sharper. The axis separating cerebellum from the rest of the brain (brain PC2, 15.4% of variance, Cohen&rsquo;s \(d = 6.04\)) loads on promoters of <b>LHX1</b> (PLS <b>33&thinsp;bp</b> from its TSS), a LIM-homeodomain factor required for cerebellar Purkinje cell differentiation, and <b>BARHL2</b> (pELS 801&thinsp;bp), a homeobox gene that specifies cerebellar granule neurons. The basal ganglia axis (brain PC4, \(d = 1.55\)) pulls out <b>PPP1R1B</b>&mdash;better known as DARPP-32&mdash;at 456&thinsp;bp from its nearest pELS. DARPP-32 is <em>the</em> canonical marker of medium spiny neurons in the striatum; if any gene should define the basal ganglia axis, it&rsquo;s this one. And the hypothalamus/hippocampus axis (brain PC23) loads on <b>FOXG1</b> (the master regulator of telencephalon identity, PLS 2.4&thinsp;kb) on the cortical side and <b>IRX3</b> (iroquois homeobox 3, a key factor in hypothalamic energy-balance circuits, PLS <b>103&thinsp;bp</b>) on the hypothalamic side.</p>
+
                     </details>
 
                     <!-- ========== Cell-Type Specificity ========== -->
