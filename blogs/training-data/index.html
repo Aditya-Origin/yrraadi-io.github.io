@@ -620,18 +620,26 @@
                 return 'rgb(' + r + ',' + gr + ',' + b + ')';
             });
 
-            /* Annotate key TFs */
-            var keyTFs = ['NEUROD2', 'OLIG3', 'OLIG2', 'OLIG1', 'NEUROG1', 'EGR1', 'SP4'];
+            /* Annotate key TFs mentioned in the blog text.
+               Each entry: [name, ax-offset, ay-offset] to avoid overlaps. */
+            var keyTFs = [
+                ['NEUROD2',  30, -40],
+                ['OLIG2',   -45,  -24],
+                ['NEUROG1',  50, -14],
+                ['SP4',     -30, -35],
+                ['EGR1',     30, -35]
+            ];
             var annotations = [];
-            keyTFs.forEach(function (name) {
+            keyTFs.forEach(function (item) {
+                var name = item[0], axOff = item[1], ayOff = item[2];
                 var idx = d.motif.indexOf(name);
                 if (idx === -1) return;
                 annotations.push({
                     x: idx, y: d.gini[idx],
-                    text: name, showarrow: true,
+                    text: '<b>' + name + '</b>', showarrow: true,
                     arrowhead: 2, arrowsize: 0.8,
-                    ax: 0, ay: -30,
-                    font: { size: 10, color: '#333' }
+                    ax: axOff, ay: ayOff,
+                    font: { size: 11, color: '#1a1a1a' }
                 });
             });
 
